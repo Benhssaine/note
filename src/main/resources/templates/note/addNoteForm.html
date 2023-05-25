@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Note</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .note-form {
+            background-color: #fff8dc; /* Made note block yellowish */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .note-form h1 {
+            margin-bottom: 15px;
+        }
+        .note-form label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .note-form input,
+        .note-form textarea,
+        .note-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        /* Increased the size of the content box */
+        .note-form textarea {
+            height: 150px;
+        }
+        .note-form input[type="submit"] {
+            background-color: #5c6bc0;
+            color: #fff;
+            cursor: pointer;
+        }
+        .note-form input[type="submit"]:hover {
+            background-color: #3949ab;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="note-form">
+        <h1>Add Note</h1>
+        <form action="#" th:action="@{/admin/note/addNote}" th:object="${note}" method="post">
+
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" th:field="*{title}" id="title" class="form-control" required>
+            </div>
+            <!-- Add this section for the date field -->
+
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" th:field="*{date}" id="date" class="form-control" required>
+            </div>
+
+            <!-- Category Section -->
+
+            <div class="form-group">
+                <label>Category</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="work" th:field="*{category.isWork}">
+                    <label class="form-check-label" for="work">
+                        Work
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="discussion" th:field="*{category.isDiscussion}">
+                    <label class="form-check-label" for="discussion">
+                        Discussion
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="help" th:field="*{category.isHelp}">
+                    <label class="form-check-label" for="help">
+                        Help
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea th:field="*{content}" id="content" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Note</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

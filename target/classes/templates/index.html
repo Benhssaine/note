@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="template.html"lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note</title>
+    <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+header h1 {
+  margin-right: 1rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+main {
+  padding: 2rem;
+}
+
+.blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.block {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.block:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.features {
+  text-align: center;
+  margin: 4rem 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.feature i {
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 2rem 0;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+</style>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+<main>
+    <section class="blocks">
+        <div class="block">
+            <h3>What's New 1</h3>
+            <p th:text="${whatsNew1}">Manage your notes effectively with our latest features and improvements.</p>
+        </div>
+        <div class="block">
+            <h3>What's New 2</h3>
+            <p th:text="${whatsNew2}">Group notes, a new feature for group note users to collaborate more effectively.</p>
+        </div>
+    </section>
+    <section class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature" data-aos="fade-up">
+                <i class="fas fa-tasks fa-3x"></i>
+                <h3>Easy Organization</h3>
+                <p th:text="${feature1}">
+                    Organize your notes easily and intuitively for better time management.
+                </p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-flag fa-3x"></i>
+                <h3>Note Prioritization</h3>
+                <p th:text="${feature2}">
+                    Assign priorities to your notes to ensure you always focus on the most important tasks.
+                </p>
+            </div>
+            <div class="feature" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-users fa-3x"></i>
+                <h3>Collaboration</h3>
+                <p th:text="${feature3}">
+                    Share your notes and collaborate with your team to achieve your goals faster.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+</div>
+<footer>
+    <div class="container">
+        <p>
+            &copy; 2023 - Intuitive Note App. All rights reserved.
+        </p>
+        <div class="social-icons">
+            <a th:href="${facebookUrl}">Facebook</a>
+            <a th:href="${twitterUrl}">Twitter</a>
+            <a th:href="${linkedinUrl}">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
